@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <textarea id="message" maxlength="70"></textarea>
+    <button onclick="sendSms()">send SMS</button>
+  </body>
+  <script>
+
+  function sendSms() {
+    var content = JSON.stringify({
+      "message": document.getElementById('message').value
+    });
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('POST', '/sendsms');
+    xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    xhttp.send(content);
+  }
+
+</script>
+</html>
